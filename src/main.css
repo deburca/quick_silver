@@ -1,9 +1,6 @@
 @import "tailwindcss";
-
-/* Scan SDC components in contrib and custom modules. */
-@source "../../../../modules/contrib/*/components";
-@source "../../../../modules/custom/*/components";
-@source "../../../../modules/hivelog/components";
+@source "../components";
+@source "../templates";
 
 @import "../components/hero-blog/hero-blog.tailwind.css";
 @import "../components/navbar/navbar.tailwind.css";
@@ -30,6 +27,7 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
+  --font-body: var(--font-body);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -147,27 +145,27 @@
 
   /* Set base heading styles since Tailwind sets them to inherit */
   h1 {
-    @apply text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
+    @apply font-sans text-5xl leading-none font-semibold md:text-6xl lg:text-7xl 2xl:text-8xl;
   }
 
   h2 {
-    @apply text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
+    @apply font-sans text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl;
   }
 
   h3 {
-    @apply text-2xl font-semibold xl:text-3xl;
+    @apply font-sans text-2xl font-semibold xl:text-3xl;
   }
 
   h4 {
-    @apply text-xl font-semibold md:text-2xl;
+    @apply font-sans text-xl font-semibold md:text-2xl;
   }
 
   h5 {
-    @apply text-lg font-semibold md:text-xl;
+    @apply font-sans text-lg font-semibold md:text-xl;
   }
 
   h6 {
-    @apply text-base font-semibold md:text-lg;
+    @apply font-sans text-base font-semibold md:text-lg;
   }
 
   code,
@@ -213,30 +211,6 @@
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
   }
-  .button-primary {
-    background: var(--primary);
-    color: var(--primary-foreground);
-  }
-
-  .button-primary:hover {
-    background: color-mix(in oklch, var(--primary) 88%, black);
-  }
-
-  .button-accent:hover {
-    background: color-mix(in oklch, var(--accent) 90%, black);
-  }
-
-  .button-secondary:hover {
-    background: color-mix(in oklch, var(--secondary) 92%, black);
-  }
-
-  .dark .button-primary:hover {
-    background: color-mix(in oklch, var(--primary) 85%, white);
-  }
-
-  .surface-hover:hover {
-    background: color-mix(in oklch, var(--card) 94%, var(--primary));
-  }
 }
 
 @layer components {
@@ -274,7 +248,7 @@
   }
 
   .form-required::after {
-    @apply ml-1 text-destructive;
+    @apply ml-1 text-red-500;
     content: "*";
   }
 
@@ -319,32 +293,29 @@
   }
 
   .form-submit,
-  .button {
-    @apply cursor-pointer rounded-lg bg-primary px-5 py-2 text-base text-primary-foreground
-      transition duration-300 ease-in-out motion-reduce:transition-none;
+  input.button {
+    @apply cursor-pointer rounded-lg bg-primary px-5 py-2 text-base text-primary-foreground;
   }
 
   .form-submit:hover,
-  .button:hover,
-  .form-submit:focus-visible,
-  .button:focus-visible {
+  input.button:hover {
     @apply bg-primary/85;
   }
 
   .form-item--error input,
   .form-item--error textarea,
   .form-item--error select {
-    @apply border-destructive;
+    @apply border-red-500;
   }
 
   .form-item--error input:focus,
   .form-item--error textarea:focus,
   .form-item--error select:focus {
-    @apply border-destructive shadow-sm;
+    @apply border-red-500 shadow-sm;
   }
 
   .form-item--error-message {
-    @apply mt-1 mb-3 basis-full text-sm text-destructive;
+    @apply mt-1 mb-3 basis-full text-sm text-red-500;
   }
 
   .webform-options-display-one-column {

@@ -12,13 +12,9 @@ class Navbar extends ComponentInstance {
     measureScrollbarAndObserve(this.el.querySelector(".navbar--dropdown-menu"));
 
     this.menuButton.addEventListener("click", () => {
-      this.menu
-        .querySelectorAll(".dropdown-menu__expand-button--has-been-opened")
-        .forEach((button) => {
-          button.classList.remove(
-            "dropdown-menu__expand-button--has-been-opened",
-          );
-        });
+      this.menu.querySelectorAll(".dropdown-menu__expand-button--has-been-opened").forEach((button) => {
+        button.classList.remove("dropdown-menu__expand-button--has-been-opened");
+      });
       this.isOpen = true;
     });
 
@@ -79,10 +75,7 @@ class Navbar extends ComponentInstance {
   }
 
   measureScrollTop() {
-    document.documentElement.style.setProperty(
-      "--navbar-scroll-top",
-      `${window.scrollY}px`,
-    );
+    document.documentElement.style.setProperty("--navbar-scroll-top", `${window.scrollY}px`);
   }
 }
 

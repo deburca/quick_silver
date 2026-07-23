@@ -11,11 +11,9 @@ class AccordionContainer extends ComponentInstance {
     // accordions.
     this.el.addEventListener("accordionopen", (e) => {
       // Close all descendant accordions except the one that just opened.
-      const otherAccordionInstances =
-        window.quick_silverComponents.accordion.instances.filter(
-          (accordion) =>
-            this.el.contains(accordion.el) && e.target !== accordion.el,
-        );
+      const otherAccordionInstances = window.quick_silverComponents.accordion.instances.filter(
+        (accordion) => this.el.contains(accordion.el) && e.target !== accordion.el,
+      );
       otherAccordionInstances.forEach((instance) => {
         instance.isOpen = false;
       });
@@ -23,8 +21,4 @@ class AccordionContainer extends ComponentInstance {
   }
 }
 
-new ComponentType(
-  AccordionContainer,
-  "accordionContainer",
-  ".accordion-container",
-);
+new ComponentType(AccordionContainer, "accordionContainer", ".accordion-container");

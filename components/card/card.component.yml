@@ -16,11 +16,13 @@ props:
         - accent
         - primary
         - inverted
+        - background
       meta:enum:
         default: Default
         accent: Accent
         primary: Primary
         inverted: Inverted
+        background: Background
       examples:
         - default
     style:
@@ -63,6 +65,7 @@ props:
     url:
       type: string
       title: Link
+      format: uri-reference
     media:
       $ref: json-schema-definitions://canvas.module/image
       title: Image

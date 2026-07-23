@@ -1,4 +1,4 @@
-{% set has_url = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
+{% set has_url = url is not empty ? 'yes' : 'no' %}
 {% set is_icon_first = icon_first is not empty ? 'yes' : 'no' %}
 
 {# Normalize badge_classes - handle both array and string formats #}
@@ -13,7 +13,7 @@
       'rounded-sm border',
       'flex inline-flex items-center gap-[2px] lg:gap-1',
       'px-[6px] py-[5px] lg:px-2 lg:py-[6px] 2xl:px-3 2xl:py-2',
-      'focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+      'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]'
     ],
     variants: {
       style: {
