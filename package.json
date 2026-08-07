@@ -22,5 +22,9 @@
   },
   "dependencies": {
     "motion": "^12.37.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "@parcel/watcher@2.5.1": true
   }
 }
