@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * quick_silver override for the language switcher block (links__language_block).
+ *
+ * Task 0069 phase 6. A light restyle of core links.html.twig: inline,
+ * horizontal, 44px touch targets, the active language marked. The <a> markup
+ * itself is left untouched — core already builds each link with the correct
+ * language-prefixed href plus hreflang / lang attributes. Styling for the
+ * links lives in src/theme.css (.language-switcher*), so no Tailwind rebuild.
+ *
+ * Not placed in any region yet: going live means adding the
+ * `language_block:language_interface` component to the header or footer
+ * Canvas page region once enough Danish content exists (task 0069,
+ * open question 4).
+ *
+ * Available variables:
+ * - links: An array of language links, each with `link` (or `text`) and
+ *   `attributes`; the current language's item carries the `is-active` class.
+ * - attributes: attributes for the <ul>.
+ * - heading: optional heading (suppressed here in favour of aria-label).
+ */
+#}
+{% if links %}
+  <nav class="language-switcher" aria-label="{{ 'Language'|t }}">
+    <ul{{ attributes.addClass('language-switcher__list', 'flex', 'flex-row', 'items-center', 'gap-1', 'font-body', 'text-base') }}>
+      {% for item in links %}
+        <li{{ item.attributes.addClass('language-switcher__item', 'flex') }}>
+          {%- if item.link -%}
+            {{ item.link }}
+          {%- elseif item.text -%}
+            <span class="language-switcher__current">{{ item.text }}</span>
+          {%- endif -%}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

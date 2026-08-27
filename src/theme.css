@@ -114,6 +114,44 @@
   }
 }
 
+/**
+ * Language switcher (task 0069, phase 6).
+ *
+ * Styles the markup from templates/navigation/links--language-block.html.twig.
+ * Not placed in a region yet; safe to ship ahead of go-live.
+ */
+.language-switcher__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.language-switcher__item a,
+.language-switcher__current {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.language-switcher__item a:hover,
+.language-switcher__item a:focus-visible {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.language-switcher__item a.is-active,
+.language-switcher__item .is-active a,
+.language-switcher__current {
+  font-weight: 600;
+  color: var(--primary);
+}
+
 .dark {
   --background: oklch(0.28 0.06 210);
   --foreground: oklch(0.95 0.03 90);
